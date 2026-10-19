@@ -1,11 +1,6 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta property="og:title" content="Jeniffer & Sebastián · ¡Nos casamos!">
-<meta property="og:description" content="16 de enero de 2027 · Abadía El Faro de Cota">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Jeniffer & Sebastián</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap">
@@ -73,16 +68,55 @@ const CONFIG = {
     nota: "El blanco y el marfil están reservados para la novia."
   },
 
+  /* INVITADOS — cada familia recibe su propio link: el link de la invitación + "#" + id
+     Ejemplo: https://TUUSUARIO.github.io/jeniffer-y-sebastian/#montano-garnica
+     id: solo minúsculas, sin tildes ni espacios (no lo cambies después de enviar el link).
+     sobre: nombre escrito en el sobre · saludo: inicio de la carta · mensaje: la carta
+     corto: para el "gracias" del formulario · pases: lugares reservados. */
+  mostrarLista: false,  // true: con el link general aparece una lista para buscar el nombre.
+  firma: "Con todo nuestro amor, Jeniffer & Sebastián",
+  invitados: [
+    { id:"montano-garnica", sobre:"Familia Montaño Garnica", pases:2, corto:"abuelita y papá",
+      saludo:"Para mi querida abuelita Abigail y papá",
+      mensaje:"Gracias por estar siempre presentes en mi vida y en esta gran etapa. Agradecemos de corazón su presencia y su fortaleza. Siempre vamos a estar súper agradecidos con ustedes por cuidar a Loki y a Valkyria, y por querernos tanto. Los queremos." },
+    { id:"maria-y-ferney", sobre:"María Montaño y Ferney Caballero", pases:2, corto:"tía y primo",
+      saludo:"Querida tía y primo",
+      mensaje:"Queremos compartir con ustedes este momento, porque han sido incondicionales en nuestra vida, y queremos celebrar a su lado esta fecha tan feliz. Gracias por compartir con nosotros tantos momentos. Estamos muy agradecidos por sus consejos, y en especial por sus consejos de yoga, de amor y de paz. ¡Besitos!" },
+    { id:"moncada-romero", sobre:"Familia Moncada Romero", pases:2, corto:"Alejandro y Caterine",
+      saludo:"Queridos Alejandro y Caterine",
+      mensaje:"Gracias por estar en nuestra relación y por haber sido parte de todo este tiempo juntos. Nos encantaría que estuvieran con nosotros, acompañándonos en esta nueva etapa. Los queremos mucho, gracias por los detalles y regalos que siempre nos dan. ¡Abrazos y besos!" },
+    { id:"chaparro-montano", sobre:"Familia Chaparro Montaño", pases:2, corto:"familia Chaparro Montaño",
+      saludo:"Querida familia Chaparro Montaño",
+      mensaje:"Ustedes han sido parte de nuestra historia y de muchos momentos bonitos en familia. Por eso no imaginamos este día sin ustedes. Gracias por su cariño de siempre; nos llena de alegría invitarlos a celebrar el comienzo de esta nueva etapa. Los queremos mucho." },
+    { id:"harrington", sobre:"Familia Harrington", pases:2, corto:"familia Harrington",
+      saludo:"Querida familia Harrington",
+      mensaje:"Gracias por todo el cariño que nos han regalado a lo largo de este camino. Para nosotros es muy especial compartir con ustedes uno de los días más felices de nuestra vida. Nos haría muy felices verlos ahí, celebrando a nuestro lado. Con mucho cariño." },
+    { id:"romero-rodriguez", sobre:"Familia Romero Rodríguez", pases:2, corto:"familia Romero Rodríguez",
+      saludo:"Querida familia Romero Rodríguez",
+      mensaje:"La familia es el lugar donde aprendimos a querer, y ustedes son parte de eso. Gracias por acompañarnos siempre y por alegrarse con cada paso que damos. Queremos que estén presentes cuando digamos “sí, para siempre”. Los queremos." },
+    { id:"romero-suarez", sobre:"Familia Romero Suárez", pases:2, corto:"familia Romero Suárez",
+      saludo:"Querida familia Romero Suárez",
+      mensaje:"Gracias por cada reunión, cada risa y cada abrazo compartido. Ustedes hacen parte de lo que somos, y por eso queremos que nos acompañen en este día tan importante. Será un honor celebrar juntos el comienzo de nuestra nueva vida. Con mucho amor." },
+    { id:"rodriguez-cubides", sobre:"Familia Rodríguez Cubides", pases:3, corto:"familia Rodríguez Cubides",
+      saludo:"Querida familia Rodríguez Cubides",
+      mensaje:"Gracias por estar cerca de nosotros y por todo el cariño que nos han dado. Queremos que tú, tu hija y tu acompañante vivan con nosotros este día tan especial. Su compañía hará que la celebración sea todavía más bonita. Los esperamos con mucho cariño." },
+    { id:"romero-pineda", sobre:"Familia Romero Pineda", pases:2, corto:"familia Romero Pineda",
+      saludo:"Querida familia Romero Pineda",
+      mensaje:"Hay personas que siempre están, en los momentos sencillos y en los importantes. Ustedes son de esas personas. Por eso queremos que nos acompañen el día en que unimos nuestras vidas. Gracias por su cariño de siempre. Los queremos." },
+    { id:"romero-y-esposa", sobre:"Sr. Romero y esposa", pases:2, corto:"querida pareja",
+      saludo:"Queridos señor Romero y esposa",
+      mensaje:"Gracias por su cariño y por acompañarnos en nuestra historia. Nos llena de ilusión invitarlos a celebrar con nosotros este nuevo comienzo. Su presencia hará este día aún más especial. Con mucho cariño." },
+    { id:"nicolas-martinez", sobre:"Nicolás Martínez", pases:1, corto:"Nicolás",
+      saludo:"Querido Nicolás",
+      mensaje:"Gracias por tu amistad y por estar presente en nuestra historia. No podíamos imaginar este día sin ti. Nos haría muy felices que nos acompañes a celebrar el comienzo de esta nueva etapa. ¡Te esperamos!" }
+  ],
+
   /* CONFIRMACIÓN DE ASISTENCIA
-     modo "whatsapp": al enviar, el invitado abre WhatsApp con su respuesta escrita
-       hacia el número de abajo (formato internacional, sin "+" ni espacios: 573001234567).
-     modo "formspree": funciona solo si publican la página fuera de Claude (Netlify, etc.);
-       pega aquí el endpoint de tu formulario, p. ej. "https://formspree.io/f/abcdwxyz".
-     Mientras whatsapp esté vacío, el invitado podrá copiar su respuesta para enviarla. */
+     Las respuestas se guardan solas en una hoja de Google Sheets.
+     Pega aquí la dirección del "Web app" de Google Apps Script (termina en /exec).
+     Las instrucciones están en el archivo "conectar-google-sheets.txt". */
   confirmacion: {
-    modo: "whatsapp",
-    whatsapp: "",
-    formspree: "",
+    googleScript: "",
     fechaLimite: "" // opcional, p. ej. "15 de diciembre de 2026"
   }
 };
@@ -93,18 +127,19 @@ const CONFIG = {
    Diseño de un solo tema a propósito (como una invitación impresa). */
 :root{
   --paper:#F6F0E4; --paper-2:#EEE4D1; --sand:#D9C8AB; --ink:#3A2A20; --ink-soft:#6B5747;
-  --olive:#5E6838; --sage:#9DA88C; --gold:#A6884F; --terra:#B97D60; --white:#FFFDF8;
+  --olive:#A4532E; --leaf:#5F6B3C; --coffee:#5A3D2B; --sage-bg:#E4E3CF; --caramel:#A0683F; --sage:#9DA88C; --gold:#A6884F; --terra:#B97D60; --white:#FFFDF8;
   --display:"Bodoni Moda", "Didot", Georgia, serif;
   --body:"Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --script:"Pinyon Script", "Snell Roundhand", cursive;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:300;font-size:17px;line-height:1.7;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
   overflow-x:hidden;
-  background-image:radial-gradient(circle at 20% 10%, rgba(166,136,79,.07), transparent 40%),radial-gradient(circle at 80% 70%, rgba(94,104,56,.06), transparent 45%);
+  background-image:radial-gradient(circle at 20% 10%, rgba(166,136,79,.07), transparent 40%),radial-gradient(circle at 80% 70%, rgba(123,82,54,.06), transparent 45%);
 }
 body.locked{overflow:hidden}
 img{max-width:100%;display:block}
@@ -119,13 +154,13 @@ p{margin:0}
 section{padding-block:clamp(72px,11vw,128px)}
 .sec-head{display:grid;gap:14px;justify-items:center;text-align:center;margin-bottom:clamp(36px,6vw,64px)}
 .sec-head h2{font-size:clamp(32px,5.4vw,54px)}
-.sprig{width:120px;height:34px;color:var(--olive)}
+.sprig{width:120px;height:34px;color:var(--leaf)}
 
 /* Botones */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:500 13px/1 var(--body);letter-spacing:.2em;text-transform:uppercase;
   padding:17px 28px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;cursor:pointer;
   transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease)}
-.btn:hover{transform:translateY(-2px);background:var(--olive);border-color:var(--olive)}
+.btn:hover{transform:translateY(-2px);background:var(--leaf);border-color:var(--leaf)}
 .btn.ghost{background:transparent;color:var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:var(--paper)}
 .btn-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
@@ -150,11 +185,11 @@ section{padding-block:clamp(72px,11vw,128px)}
 .env-card .eyebrow{font-size:10px}
 .env-front{position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:6px;overflow:hidden}
 .env-front::before{content:"";position:absolute;inset:0;background:#E9DEC7;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%)}
-.env-front::after{content:"";position:absolute;inset:0;border:1px solid rgba(94,104,56,.35);border-radius:6px;margin:8px}
+.env-front::after{content:"";position:absolute;inset:0;border:1px solid rgba(123,82,54,.35);border-radius:6px;margin:8px}
 .env-flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:3;transform-origin:top center;transition:transform .9s var(--ease), z-index 0s .45s}
 .env-flap::before{content:"";position:absolute;inset:0;background:#E2D5BA;clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 2px 2px rgba(0,0,0,.1))}
-.seal{position:absolute;left:50%;top:60%;width:72px;height:72px;transform:translate(-50%,-50%);z-index:4;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%, #7A8550, #545D30 60%, #434A25);color:#EFE6CF;display:grid;place-items:center;
+.seal{position:absolute;left:50%;top:54%;width:62px;height:62px;transform:translate(-50%,-50%);z-index:4;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #C77A50, #A4532E 60%, #7E3D20);color:#EFE6CF;display:grid;place-items:center;
   font-family:var(--display);font-size:17px;letter-spacing:.04em;box-shadow:0 4px 10px rgba(0,0,0,.35), inset 0 0 0 4px rgba(255,255,255,.08);
   transition:opacity .4s, transform .4s var(--ease)}
 .envelope:hover .seal{transform:translate(-50%,-50%) scale(1.05)}
@@ -162,6 +197,37 @@ section{padding-block:clamp(72px,11vw,128px)}
 .open .env-flap{transform:rotateX(180deg);z-index:0}
 .open .env-card{transform:translateY(-42%)}
 .sobre-hint{color:#D8CBB2;font-size:13px;letter-spacing:.12em}
+.picker{display:grid;gap:8px;width:100%;max-width:340px;text-align:left}
+.picker label{color:#E8DCC6;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.picker select{font:inherit;font-size:16px;padding:13px 16px;border-radius:999px;border:1px solid rgba(243,234,218,.5);background:rgba(243,234,218,.12);color:#F3EADA;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F3EADA' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
+.picker select option{color:#3A2A20;background:#F6F0E4}
+.env-card .para{font-family:var(--display);font-style:italic;font-size:clamp(13px,3.4vw,16px);color:var(--olive);padding:0 10px;line-height:1.3}
+/* Nombre en el sobre */
+.env-addr{position:absolute;left:0;right:0;bottom:6%;z-index:3;display:grid;gap:0;justify-items:center;pointer-events:none;transition:opacity .4s}
+.env-addr small{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft)}
+.env-addr span{font-family:var(--script);font-size:clamp(18px,5vw,25px);line-height:1.1;max-width:88%;color:var(--ink);padding:0 14px;text-align:center}
+.open .env-addr{opacity:0}
+/* Carta personal */
+.carta{padding-block:clamp(40px,7vw,72px) clamp(64px,9vw,104px)}
+.letter{max-width:680px;margin:0 auto;background:var(--white);border:1px solid var(--sand);padding:clamp(32px,6vw,64px) clamp(22px,6vw,64px);position:relative;box-shadow:0 30px 60px -40px rgba(58,42,32,.45)}
+.letter::before{content:"";position:absolute;inset:10px;border:1px solid rgba(164,83,46,.25);pointer-events:none}
+.letter .eyebrow{display:block;text-align:center;margin-bottom:22px}
+.letter h2{font-family:var(--script);font-size:clamp(36px,6vw,52px);color:var(--olive);line-height:1.15;text-align:center}
+.letter p.msg{font-family:var(--display);font-size:clamp(19px,2.4vw,23px);line-height:1.65;margin-top:24px;color:var(--ink)}
+.letter .firma{margin-top:30px;text-align:right;font-family:var(--display);font-style:italic;color:var(--ink-soft);font-size:18px}
+.letter .sprig{display:block;margin:28px auto 0}
+/* Pase de entrada */
+.pase-wrap{max-width:640px;margin:0 auto clamp(44px,6vw,64px)}
+.pase{display:grid;grid-template-columns:1fr auto;background:var(--coffee);color:var(--paper);border-radius:10px;overflow:hidden;position:relative;box-shadow:0 24px 50px -28px rgba(58,42,32,.6)}
+.pase-main{padding:26px 26px 24px;display:grid;gap:10px;border-right:2px dashed rgba(246,240,228,.35)}
+.pase-main .eyebrow{color:#E8B48F}
+.pase-main h3{font-family:var(--script);font-size:clamp(30px,5vw,40px);line-height:1.1}
+.pase-meta{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;letter-spacing:.08em;color:#E9DCC8}
+.pase-side{display:grid;place-content:center;justify-items:center;padding:20px 24px;background:var(--olive);text-align:center;min-width:120px}
+.pase-side b{font-family:var(--display);font-weight:400;font-size:56px;line-height:1}
+.pase-side span{font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+@media (max-width:520px){.pase{grid-template-columns:1fr}.pase-main{border-right:0;border-bottom:2px dashed rgba(246,240,228,.35)}}
 
 /* ===== Portada ===== */
 .hero{padding-block:clamp(28px,5vw,56px) clamp(64px,9vw,104px)}
@@ -205,7 +271,7 @@ section{padding-block:clamp(72px,11vw,128px)}
 
 /* ===== Lugar ===== */
 .venue{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
-.venue-visual{aspect-ratio:4/5;border-radius:4px;overflow:hidden;position:relative;background:linear-gradient(160deg,#59633A,#3E4628)}
+.venue-visual{aspect-ratio:4/5;border-radius:4px;overflow:hidden;position:relative;background:linear-gradient(160deg,#B56A42,#7A3F24)}
 .venue-visual .frame{position:absolute;inset:16px;border:1px solid rgba(239,230,207,.45);display:grid;place-content:center;gap:14px;text-align:center;color:#EFE6CF;padding:20px}
 .venue-visual .frame .script{font-size:clamp(44px,6vw,60px);line-height:1}
 .venue-visual svg.branch{position:absolute;width:70%;color:rgba(239,230,207,.28)}
@@ -217,7 +283,7 @@ section{padding-block:clamp(72px,11vw,128px)}
 
 /* ===== Galería ===== */
 .gallery{background:var(--ink);color:var(--paper);margin-inline:calc(-1*max(16px, env(safe-area-inset-left,0px)));padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
-.gallery .eyebrow{color:var(--sage)}
+.gallery .eyebrow{color:var(--sand)}
 .gallery .sprig{color:var(--sage)}
 .collage{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:clamp(90px,13vw,150px);gap:clamp(8px,1.4vw,16px)}
 .collage figure{margin:0;overflow:hidden;border-radius:3px;cursor:zoom-in;position:relative}
@@ -273,7 +339,7 @@ section{padding-block:clamp(72px,11vw,128px)}
 .tl.final h3{color:var(--olive)}
 .photos-intro{text-align:center;font-family:var(--display);font-style:italic;font-size:clamp(20px,2.4vw,24px);color:var(--ink-soft);margin-top:clamp(64px,9vw,96px)}
 /* Banda romántica */
-.love-band{background:var(--olive);color:var(--paper);text-align:center;margin-inline:calc(-1*max(16px, env(safe-area-inset-left,0px)));padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));padding-block:clamp(64px,9vw,104px);position:relative;overflow:hidden}
+.love-band{background:var(--leaf);color:var(--paper);text-align:center;margin-inline:calc(-1*max(16px, env(safe-area-inset-left,0px)));padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px));padding-block:clamp(64px,9vw,104px);position:relative;overflow:hidden}
 .love-band .script{font-size:clamp(52px,9vw,96px);line-height:1.05;display:block}
 .love-band p{font-family:var(--display);font-style:italic;font-size:clamp(19px,2.4vw,24px);opacity:.9;margin-top:18px}
 .love-band svg.branch{position:absolute;width:min(320px,45%);color:rgba(246,240,228,.14)}
@@ -301,7 +367,7 @@ fieldset{border:0;padding:0;margin:0;display:grid;gap:10px}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .choice input{position:absolute;opacity:0}
 .choice span{display:block;text-align:center;padding:14px;border:1px solid var(--sand);border-radius:999px;cursor:pointer;font-size:15px;transition:all .3s}
-.choice input:checked+span{background:var(--olive);border-color:var(--olive);color:var(--paper)}
+.choice input:checked+span{background:var(--leaf);border-color:var(--leaf);color:var(--paper)}
 .choice input:focus-visible+span{outline:2px solid var(--olive);outline-offset:3px}
 .err{color:#9A3F2B;font-size:14px;min-height:0}
 .hint{font-size:14px;color:var(--ink-soft)}
@@ -327,6 +393,26 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
 #musica.playing svg{animation:spin 8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+
+/* Armonía tierra: terracota · café · verde */
+.tl:nth-child(even) .yr{color:var(--leaf)}
+.tl:nth-child(3) .yr{color:var(--caramel)}
+.tl .pt{border-color:var(--olive)}
+.tl:nth-child(even) .pt{border-color:var(--leaf)}
+.date-big .day{color:var(--olive)}
+.cd{background:var(--sage-bg)}
+.cd b{color:var(--coffee)}
+.time-pill{border-color:var(--leaf);color:var(--leaf)}
+#confirmar{background:var(--sage-bg)}
+.note{color:var(--leaf);border-left-color:var(--olive)}
+.dress-rules div:first-child{border-color:var(--olive)}
+.dress-rules div:last-child{border-color:var(--leaf)}
+.venue-name{color:var(--leaf)}
+.hero-date::before{background:var(--olive)}
+.names .amp{color:var(--olive)}
+.story-text::first-letter{color:var(--leaf)}
+.gallery .sprig{color:#C9B48F}
+.closing .numdate{color:var(--olive)}
 @media (max-width:760px){
   .timeline::before{left:23px}
   .tl{grid-template-columns:48px 1fr;column-gap:16px;row-gap:4px}
@@ -361,8 +447,6 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
 }
 </style>
 
-</head>
-<body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="sprig" viewBox="0 0 120 34">
@@ -401,13 +485,19 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
     <button class="envelope" id="envelope" aria-label="Abrir el sobre de la invitación">
       <div class="env-back"></div>
       <div class="env-card">
+        <span class="para" id="paraQuien" hidden></span>
         <span class="script" data-bind="pareja"></span>
         <span class="eyebrow">¡Nos casamos!</span>
       </div>
       <div class="env-front"></div>
+      <div class="env-addr" id="envAddr" hidden><small>Para</small><span id="envAddrName"></span></div>
       <div class="env-flap"></div>
       <div class="seal" data-bind="iniciales"></div>
     </button>
+    <div class="picker" id="picker" hidden>
+      <label for="quien">Busca tu nombre</label>
+      <select id="quien"><option value="">Elige tu invitación…</option></select>
+    </div>
     <button class="btn" id="abrir" style="background:#F3EADA;color:#3A2A20;border-color:#F3EADA">Abrir invitación</button>
     <p class="sobre-hint">Toca el sello o el botón</p>
   </div>
@@ -427,6 +517,17 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
       </div>
     </div>
   </header>
+
+  <!-- ============ CARTA PERSONAL (solo con link personal) ============ -->
+  <section class="carta" id="carta" hidden>
+    <div class="letter reveal">
+      <span class="eyebrow">Una carta para ustedes</span>
+      <h2 id="cartaSaludo"></h2>
+      <p class="msg" id="cartaMensaje"></p>
+      <p class="firma" id="cartaFirma"></p>
+      <svg class="sprig"><use href="#sprig"/></svg>
+    </div>
+  </section>
 
   <!-- ============ NUESTRA HISTORIA ============ -->
   <section class="story" id="historia">
@@ -490,7 +591,7 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
         <svg class="branch" style="left:-12%;bottom:-6%"><use href="#olive-branch"/></svg>
         <svg class="branch" style="right:-14%;top:-8%;transform:rotate(180deg)"><use href="#olive-branch"/></svg>
         <div class="frame">
-          <span class="eyebrow" style="color:#C9CFB7">Cota · Cundinamarca</span>
+          <span class="eyebrow" style="color:#E2CDB4">Cota · Cundinamarca</span>
           <span class="script" data-bind="lugarNombre"></span>
         </div>
       </div>
@@ -534,14 +635,14 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
       </div>
       <div class="looks reveal" aria-label="Inspiración de atuendos">
         <div class="look">
-          <div class="card" style="background:#E6DAC2">
-            <svg viewBox="0 0 100 220" aria-hidden="true"><circle cx="50" cy="18" r="10" fill="#4A3326"/><path d="M42 30h16l4 34c10 40 22 90 26 152H12c4-62 16-112 26-152z" fill="#636B3B"/><path d="M42 30h16l-2 14h-12z" fill="#525a30"/></svg>
+          <div class="card" style="background:#E4E3CF">
+            <svg viewBox="0 0 100 220" aria-hidden="true"><circle cx="50" cy="18" r="10" fill="#4A3326"/><path d="M42 30h16l4 34c10 40 22 90 26 152H12c4-62 16-112 26-152z" fill="#A4532E"/><path d="M42 30h16l-2 14h-12z" fill="#8A4426"/></svg>
           </div>
           Mujeres · vestido largo
         </div>
         <div class="look">
           <div class="card" style="background:#D6C3A3">
-            <svg viewBox="0 0 100 220" aria-hidden="true"><circle cx="50" cy="18" r="10" fill="#4A3326"/><path d="M30 34c6-3 34-3 40 0l6 80H64l-4 102H52l-2-90-2 90h-8l-4-102H24z" fill="#4A3326"/><path d="M46 34h8l-4 26z" fill="#F4EDDF"/><path d="M48 36h4l-2 18z" fill="#636B3B"/></svg>
+            <svg viewBox="0 0 100 220" aria-hidden="true"><circle cx="50" cy="18" r="10" fill="#4A3326"/><path d="M30 34c6-3 34-3 40 0l6 80H64l-4 102H52l-2-90-2 90h-8l-4-102H24z" fill="#4A3326"/><path d="M46 34h8l-4 26z" fill="#F4EDDF"/><path d="M48 36h4l-2 18z" fill="#5F6B3C"/></svg>
           </div>
           Hombres · traje formal
         </div>
@@ -550,39 +651,22 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
   </section>
 
   <!-- ============ CONFIRMACIÓN ============ -->
-  <section class="story" id="confirmar">
+  <section class="story" id="confirmar" hidden>
     <div class="wrap">
       <div class="sec-head reveal">
         <svg class="sprig"><use href="#sprig"/></svg>
-        <p class="eyebrow">Confirmación de asistencia</p>
-        <h2>¿Nos acompañas?</h2>
-        <p class="hint" id="limite" hidden></p>
+        <p class="eyebrow">Su lugar está reservado</p>
+        <h2>Su pase de entrada</h2>
       </div>
-      <div class="rsvp-card reveal">
-        <form id="rsvp" novalidate>
-          <div class="field">
-            <label for="nombre">Nombre completo</label>
-            <input type="text" id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre y apellido">
+      <div class="pase-wrap reveal" id="pase" hidden>
+        <div class="pase">
+          <div class="pase-main">
+            <span class="eyebrow">Pase de entrada</span>
+            <h3 id="paseNombre"></h3>
+            <div class="pase-meta"><span id="paseFecha"></span><span id="paseLugar"></span><span id="paseHora"></span></div>
           </div>
-          <fieldset>
-            <legend class="legend">¿Nos acompañarás?</legend>
-            <div class="choices">
-              <label class="choice"><input type="radio" name="asiste" id="asisteSi" value="si"><span>Sí, ahí estaré</span></label>
-              <label class="choice"><input type="radio" name="asiste" id="asisteNo" value="no"><span>No podré asistir</span></label>
-            </div>
-          </fieldset>
-          <div class="field" id="acompField" hidden>
-            <label for="acomp">Número de acompañantes</label>
-            <input type="number" id="acomp" name="acomp" min="0" max="10" value="0" inputmode="numeric">
-          </div>
-          <div class="field">
-            <label for="mensaje">Mensaje para los novios (opcional)</label>
-            <textarea id="mensaje" name="mensaje" placeholder="Unas palabras para Jeniffer y Sebastián…"></textarea>
-          </div>
-          <p class="err" id="err" role="alert"></p>
-          <button class="btn" type="submit">Confirmar asistencia</button>
-        </form>
-        <div class="result" id="result" hidden aria-live="polite"></div>
+          <div class="pase-side"><b id="paseNum"></b><span id="paseTxt"></span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -733,6 +817,44 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
     return { start };
   })();
 
+  /* ---- Invitación personalizada ---- */
+  let invitado = null;
+  const lista = C.invitados || [];
+  function aplicarInvitado(inv){
+    invitado = inv || null;
+    const on = !!invitado;
+    $("#envAddr").hidden = !on; $("#carta").hidden = !on; $("#pase").hidden = !on; $("#confirmar").hidden = !on;
+    $("#paraQuien").hidden = !on;
+    if (on){
+      const n = invitado.pases;
+      invitado.nombre = invitado.sobre; // usado en la confirmación
+      invitado.cupos = n;
+      $("#envAddrName").textContent = invitado.sobre;
+      $("#paraQuien").textContent = `Para: ${invitado.sobre}`;
+      $("#cartaSaludo").textContent = invitado.saludo;
+      $("#cartaMensaje").textContent = invitado.mensaje;
+      $("#cartaFirma").textContent = C.firma;
+      $("#paseNombre").textContent = invitado.sobre;
+      $("#paseFecha").textContent = binds.fechaPuntos;
+      $("#paseLugar").textContent = C.lugar.nombre;
+      $("#paseHora").textContent = horaTexto;
+      $("#paseNum").textContent = n;
+      $("#paseTxt").textContent = n === 1 ? "Lugar reservado" : "Lugares reservados";
+      document.title = `${invitado.sobre} · Jeniffer & Sebastián`;
+      try { history.replaceState(null, "", "#" + invitado.id); } catch(_){}
+    } else {
+    }
+  }
+  const desdeEnlace = lista.find(i => i.id === decodeURIComponent(location.hash.slice(1)));
+  if (desdeEnlace) aplicarInvitado(desdeEnlace);
+  else if (C.mostrarLista && lista.length){
+    const sel = $("#quien");
+    lista.forEach(i => { const o = document.createElement("option"); o.value = i.id; o.textContent = i.sobre; sel.appendChild(o); });
+    const o = document.createElement("option"); o.value = "__otro"; o.textContent = "Otro invitado"; sel.appendChild(o);
+    $("#picker").hidden = false;
+    sel.addEventListener("change", () => aplicarInvitado(lista.find(i => i.id === sel.value)));
+  }
+
   /* ---- Sobre ---- */
   const sobre = $("#sobre");
   document.body.classList.add("locked");
@@ -850,57 +972,6 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
   $("#timeline").innerHTML = C.lineaTiempo.map(([y,t,d],i,a) =>
     `<div class="tl reveal${i===a.length-1?" final":""}"><span class="yr">${esc(y)}</span>${i===a.length-1?heartSvg:'<i class="pt"></i>'}<div class="tx"><h3>${esc(t)}</h3><p>${esc(d)}</p></div></div>`).join("");
 
-  /* ---- Confirmación ---- */
-  const R = C.confirmacion, form = $("#rsvp");
-  if (R.fechaLimite){ const l = $("#limite"); l.hidden = false; l.textContent = `Por favor confírmanos antes del ${R.fechaLimite}.`; }
-  form.addEventListener("change", () => { $("#acompField").hidden = !$("#asisteSi").checked; });
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    const nombre = $("#nombre").value.trim();
-    const asiste = form.asiste.value;
-    const acomp = Math.max(0, Math.min(10, parseInt($("#acomp").value || "0", 10) || 0));
-    const mensaje = $("#mensaje").value.trim();
-    const err = $("#err");
-    if (nombre.length < 3){ err.textContent = "Escribe tu nombre completo para saber quién confirma."; $("#nombre").focus(); return; }
-    if (!asiste){ err.textContent = "Elige si nos acompañarás o no."; $("#asisteSi").focus(); return; }
-    err.textContent = "";
-    const texto = `Confirmación — Boda ${C.novia} & ${C.novio}\nNombre: ${nombre}\n¿Asiste?: ${asiste==="si"?"Sí":"No"}` +
-      (asiste==="si" ? `\nAcompañantes: ${acomp}` : "") + (mensaje ? `\nMensaje: ${mensaje}` : "");
-    const gracias = asiste==="si"
-      ? `<span class="script">¡Qué alegría!</span><p>Gracias, ${nombre.split(" ")[0]}. Contar contigo hace este día todavía más especial.</p>`
-      : `<span class="script">Te extrañaremos</span><p>Gracias por avisarnos, ${nombre.split(" ")[0]}. Te llevaremos en el corazón ese día.</p>`;
-    const res = $("#result");
-
-    if (R.modo === "formspree" && R.formspree){
-      try {
-        const r = await fetch(R.formspree, {method:"POST", headers:{"Accept":"application/json","Content-Type":"application/json"}, body:JSON.stringify({nombre, asiste, acompanantes:acomp, mensaje})});
-        if (!r.ok) throw 0;
-        res.innerHTML = gracias + `<p class="hint">Tu respuesta ya les llegó a los novios.</p>`;
-      } catch(_) {
-        err.textContent = "No pudimos enviar tu confirmación en este momento. Inténtalo de nuevo en unos minutos."; return;
-      }
-    } else if (R.whatsapp){
-      const url = `https://wa.me/${R.whatsapp.replace(/\D/g,"")}?text=${encodeURIComponent(texto)}`;
-      res.innerHTML = `<p class="eyebrow">Último paso</p><p>Tu respuesta está lista. Tócala para enviarla por WhatsApp; los novios la recibirán cuando envíes el mensaje.</p>
-        <a class="btn" href="${url}" target="_blank" rel="noopener">Enviar por WhatsApp</a>
-        <div class="summary">${texto.replace(/</g,"&lt;")}</div>
-        <div style="display:grid;gap:12px;justify-items:center;margin-top:8px">${gracias}</div>`;
-    } else {
-      res.innerHTML = `<p class="eyebrow">Tu respuesta</p><p>Copia este mensaje y envíaselo a los novios para completar tu confirmación.</p>
-        <div class="summary" id="sum">${texto.replace(/</g,"&lt;")}</div>
-        <button class="btn" type="button" id="copiar">Copiar mensaje</button>
-        <div style="display:grid;gap:12px;justify-items:center;margin-top:8px">${gracias}</div>`;
-      $("#copiar").onclick = async () => {
-        try { await navigator.clipboard.writeText(texto); $("#copiar").textContent = "Copiado"; }
-        catch(_) { const s = getSelection(), r = document.createRange(); r.selectNodeContents($("#sum")); s.removeAllRanges(); s.addRange(r); $("#copiar").textContent = "Texto seleccionado: cópialo"; }
-      };
-    }
-    res.innerHTML += `<button class="btn ghost" type="button" id="editar">Cambiar mi respuesta</button>`;
-    form.hidden = true; res.hidden = false;
-    $("#editar").onclick = () => { res.hidden = true; form.hidden = false; };
-    res.scrollIntoView({behavior: reduce?"auto":"smooth", block:"center"});
-  });
-
   /* ---- Pétalos ---- */
   (function(){
     const cv = $("#petalos");
@@ -929,5 +1000,4 @@ footer{text-align:center;padding-block:28px 40px;font-size:13px;color:var(--ink-
 })();
 </script>
 
-</body>
-</html>
+</body></html>
